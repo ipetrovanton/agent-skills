@@ -9,11 +9,13 @@
 в оригинальном виде с сохранением атрибуции и лицензий (см. раздел «Атрибуция и лицензии»
 и файл [`NOTICE`](./NOTICE)).
 
-Скилы продублированы в двух форматах — контент `SKILL.md` идентичен, различается только
-путь размещения (формат Anthropic Agent Skills совместим с обоими):
+Скилы продублированы в трёх форматах — контент `SKILL.md` идентичен, различается только
+путь размещения (формат Anthropic Agent Skills совместим со всеми):
 
 - `claude/skills/<имя-скила>/SKILL.md` — версия для Claude Code.
 - `windsurf/skills/<имя-скила>/SKILL.md` — версия для Windsurf.
+- `.agents/skills/<имя-скила>/SKILL.md` — версия для Devin (он ищет скилы именно в
+  `.agents/skills/`; в этом репозитории Devin подхватывает их напрямую).
 
 ## Список скилов
 
@@ -50,6 +52,9 @@ cp -r claude/skills/<имя-скила> /путь/к/проекту/.claude/skil
 
 # Windsurf — из windsurf/skills/ в .windsurf/skills/ целевого проекта
 cp -r windsurf/skills/<имя-скила> /путь/к/проекту/.windsurf/skills/
+
+# Devin — из .agents/skills/ в .agents/skills/ целевого репозитория
+cp -r .agents/skills/<имя-скила> /путь/к/проекту/.agents/skills/
 ```
 
 Скопировать все сразу:
@@ -60,6 +65,9 @@ mkdir -p /путь/к/проекту/.claude/skills && cp -r claude/skills/* /п
 
 # Windsurf
 mkdir -p /путь/к/проекту/.windsurf/skills && cp -r windsurf/skills/* /путь/к/проекту/.windsurf/skills/
+
+# Devin
+mkdir -p /путь/к/проекту/.agents/skills && cp -r .agents/skills/* /путь/к/проекту/.agents/skills/
 ```
 
 Некоторые агенты используют другие каталоги (`.codeium/windsurf/skills/`,
